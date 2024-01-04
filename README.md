@@ -10,3 +10,4 @@ Problems encountered
 
 
 trying to figure out how to revert changes now
+still haven't figure out how, I cannot find the change/history sidebar
