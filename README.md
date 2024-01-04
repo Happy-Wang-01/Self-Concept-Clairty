@@ -1,9 +1,10 @@
-# Tryout-Repo
+#Assignment 1.1
 
-## happy
-## 22
+##Tryout Repo
 
-changes
-
-* psychology
+Problems encountered
+**How to download Git to the computer**
+  **solution:change setting**
+**How to push the changes to GitHub**
+  **solution:create keypad and use it as password**
 
