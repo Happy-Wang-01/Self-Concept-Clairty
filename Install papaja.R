@@ -22,3 +22,4 @@ class(a)
 b <- "yes"
 b
 class(b)
+
