@@ -23,4 +23,4 @@ b <- "yes"
 b
 class(b)
 
-#not sure if you want me to create a seperate file for the second part of the assignemnt or not
+#not sure if you want me to create a seperate file for the second part of the assignment or not
