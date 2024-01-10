@@ -6,8 +6,7 @@ The data is in the format of .sav and can be opened in R using the "foreign" pac
 The research question is to explore the potential explanations underlying the curvilinear relationships between the importance of self-concept clarity to well-being across the lifespan. 
 The explanations contained in the current datasets include social roles, role entries, etc., and the collecting data includes deviance from the social clock.
 ##Repo File Organization
-
-
+Use the same file for the submission of assignment
 
 
 
