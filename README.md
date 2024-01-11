@@ -1,12 +1,13 @@
 ## Dataset Descriptions
-These current datasets are from Dr. Light's previous study on self-concept clarity, well-being, and age. 
+These current datasets are from Dr. Light's previous study on **self-concept clarity, well-being, and age**. 
 There are three different datasets that I can use or integrate along with data from my study, which will be collected soon, adding to the datasets during the quarter.
 The data is in the format of .sav and can be opened in R using the "foreign" packages or the “haven” packages.
 ## Overview of the Project
 The research question is to explore the potential explanations underlying the curvilinear relationships between the importance of self-concept clarity to well-being across the lifespan. 
 The explanations contained in the current datasets include social roles, role entries, etc., and the collecting data includes deviance from the social clock.
 ## Repo File Organization
-Use the same file for the submission of assignment
+Use the same file for the submission of assignment most of the time. 
+* Submission will be under *APA template tryout.Rmd* or *Install papaja.R*
 
 
 
