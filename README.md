@@ -7,10 +7,7 @@ The research question is to explore the potential explanations underlying the cu
 The explanations contained in the current datasets include social roles, role entries, etc., and the collecting data includes deviance from the social clock.
 ## Repo File Organization
 Use the same file for the submission of assignment most of the time. 
-* Submission will be under *APA template tryout.Rmd* or *Install papaja.R*
-  
-    
-    
+* Submission will be under *APA template tryout.Rmd* or *Install papaja.R*. 
 
 Assignment 1.1
 
