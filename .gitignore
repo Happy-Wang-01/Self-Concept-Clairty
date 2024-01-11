@@ -34,3 +34,14 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 Install papaja
+
+#Created "localonly" in console
+#Ignore localonly directory
+localonly/
+
+#Ignore file type on computer
+*.doc
+*.jpg
+
+#One specific file that is not in an ignored folder and is not an ignored filetype
+github-recovery-code.txt
