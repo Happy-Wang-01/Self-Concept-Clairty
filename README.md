@@ -8,11 +8,13 @@ The explanations contained in the current datasets include social roles, role en
 ## Repo File Organization
 Use the same file for the submission of assignment most of the time. 
 * Submission will be under *APA template tryout.Rmd* or *Install papaja.R*. 
+~~Note.do not start a file for every single assignment!~~
 \
 \
 \
 \
 \
+
 Assignment 1.1
 
 Tryout Repo
