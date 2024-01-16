@@ -1,26 +1,19 @@
 ---
-title             : "Assignment 2 Trying out APA template"
-shorttitle        : "Title"
+title             : "Assignment 5"
+shorttitle        : "2024/1/16"
 
 author: 
   - name          : "Happy W"
     affiliation   : "1"
-    corresponding : yes    # Define only one corresponding author
+    corresponding : no    # Define only one corresponding author
     address       : "Postal address"
-    email         : "my@email.com"
+    email         : "happyywang@uchicago.edu"
     role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
-      - "Conceptualization"
-      - "Writing - Original Draft Preparation"
-      - "Writing - Review & Editing"
-
-
-source("Install papaja.R")
+      - "homework assigment"
 
 affiliation:
   - id            : "1"
-    institution   : "Wilhelm-Wundt-University"
-  - id            : "2"
-    institution   : "Konstanz Business School"
+    institution   : "University of Chicago"
 
 authornote: |
   Add complete departmental affiliations for each author here. Each new line herein must be indented, like this line.
@@ -55,6 +48,29 @@ footnotelist      : no
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
+
+```{r hello_world function, include=FALSE}
+#Assignment 5 source
+source("Install papaja.R")
+#call the function
+hello_world("Happy",1,1,F)
+```
+
+<!--Assignment 5 continued with three levels of headers, unordered and ordered list, bold and italicized, one linked URL, and one HTML comment/which is this one/ -->
+# **Lorem ipsum dolor sit amet**
+* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  * _commodo_
+  
+## Lorem ipsum dolor
+1. **non**
+  2. *Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.*
+
+### Lorem ipsum
+[cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
+
+```{r trying source, x = 1}
+source("Install papaja.R")
+```
 
 ```{r setup, include = FALSE}
 library("papaja")
