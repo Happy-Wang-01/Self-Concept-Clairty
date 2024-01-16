@@ -27,6 +27,7 @@ class(b)
 
 # test push
 
+#class notes
 #there are eggs at store
 eggs <- TRUE 
 n.milk <- ifelse(eggs == TRUE,yes = 6,no = 1)
@@ -69,6 +70,7 @@ hey <- ifelse (hi == TRUE, yes = name, no = "Hello!")
 paste0("Hey there", name(" happy"))
 name("happy")
 
+#Assignment 4 starts here
 #hello_world function which aims to produce Good morning/Good afternoon
 #/Good evening, your name, for some number of times
 #ideally in English or French
@@ -93,6 +95,7 @@ hello_world <- function(your_name, current_time, n.greetings, En_or_Fr)
     i <- i + 1
   }
 }
+#test
 hello_world("happy", 10)
 hello_world("happy",12)
 hello_world("happy", 16)
