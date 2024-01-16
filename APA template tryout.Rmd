@@ -68,6 +68,8 @@ hello_world("Happy",1,1,F)
 ### Lorem ipsum
 [cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)
 
+<!--End of Assignment 5-->
+
 ```{r trying source, x = 1}
 source("Install papaja.R")
 ```
