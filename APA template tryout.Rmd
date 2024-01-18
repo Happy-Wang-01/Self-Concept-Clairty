@@ -48,6 +48,26 @@ footnotelist      : no
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
+```{r import Age and Possible Selves data, include=FALSE}
+#Assignment 6 importing datasets
+library(haven)
+Age_and_Possible_Selves<-read_sav("localonly/Age and Possible Selves 9.6.19.sav")
+#this dataset can be read in console
+#This dataset is not tidy. We need to sort the data variables by scales not by scale items. All the possible selves measures, both quantitative and qualitative are meaningful while information on the participants' location, answer duration etc. are not necessary.
+```
+
+```{r create intermediate dataset for Age and Possible Selves, include=FALSE}
+#Assignment 6 continued, create an intermediate dataset
+library(dplyr)
+library(readr)
+#use two dplyr function
+intermediate_AgeandPossibleSelves <- Age_and_Possible_Selves_9_6_19 %>%
+  filter(!is.na(Q27)) %>%
+  arrange(Q27)
+summarise(Age_and_Possible_Selves, mean_poscle = mean(poscle1, poscle2, poscle3, poscle4))
+#write into .sav file
+write_sav(intermediate_AgeandPossibleSelves, "testing intermediate_AgeandPossibleSelves.sav")
+```
 
 ```{r hello_world function, include=FALSE}
 #Assignment 5 source
