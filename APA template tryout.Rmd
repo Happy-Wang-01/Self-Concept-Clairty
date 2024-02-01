@@ -48,6 +48,24 @@ footnotelist      : no
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
+```{r plot, include=FALSE}
+#Assignment 10
+#graph out the potential models and results
+#will need a moderated mediation model, a curvilinear model, and some tables to display the result
+#ggplot()+geom_point()+geom_smooth() for the simple mediation, simple moderation
+#the curvilinear regression model i can use ggplot2()+geom_line() or plot(lm())
+#for the moderated mediation model, I will need to use sem and semPlot
+
+#Assignment 11
+library(ggplot2)
+ggplot(data = Age_and_Possible_Selves_9_16_19, aes(x = posfre, y = scc)) +
+  geom_line()
+#this is just an example for a line graph
+#if i want to use age_sq as a variable, which I will need to, the graph needs to be curvilinear
+#I wonder if geom_line will do it or not
+
+```
+
 ```{r import Age and Possible Selves data, include=FALSE}
 #Assignment 6 importing datasets
 library(haven)

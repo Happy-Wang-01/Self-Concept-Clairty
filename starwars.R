@@ -60,3 +60,23 @@ print(df_sw.wranged)
 ## Check that your sw.wrangled df is identical to the goal df
 # Use any returned information about mismatches to adjust your code as needed
 all.equal(sw.wrangled.goal, sw.wrangled.goal)
+
+#Assignment 11 part 1
+#Plot 1: frequency for height_cm
+ggplot(sw.wrangled.goal) +
+  geom_histogram(aes(x = height_cm), binwidth = 10) +
+  scale_y_continuous(breaks = seq(0,20, by = 5))
+#Plot 2: frequency for hair
+freq_table <- table(sw.wrangled.goal$hair)
+freq_table
+freq_hair_df <- data.frame(hair = names(freq_table), freq = as.numeric(freq_table))
+freq_hair_df <- freq_hair_df[order(freq_hair_df$freq, decreasing = TRUE), ]
+sw.wrangled.goal$hair <- factor(sw.wrangled.goal$hair, levels = freq_hair_df$hair)
+ggplot(sw.wrangled.goal) +
+  geom_bar(aes(x = hair)) +
+  labs(x = "sorted_hair")
+#Plot 3: scatter plot for mass and height_in
+ggplot(data = sw.wrangled.goal, aes(x = height_in, y = mass)) +
+  geom_point(shape = 24, colour = "black", fill = "black") +
+  scale_y_continuous(limits = c(0, 160), breaks = c(seq(0,160, by = 40)) ) +
+  scale_x_continuous(breaks = c(seq(0,90, by = 20)))
