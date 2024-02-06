@@ -64,6 +64,19 @@ ggplot(data = Age_and_Possible_Selves_9_16_19, aes(x = posfre, y = scc)) +
 #if i want to use age_sq as a variable, which I will need to, the graph needs to be curvilinear
 #I wonder if geom_line will do it or not
 
+#Assignment 12
+ggplot(data = Age_and_Possible_Selves_9_16_19, aes(x = posfre, y = scc, color = age_group)) +
+  geom_smooth(method = lm) +
+  geom_point() +
+  scale_x_continuous(limits = , breaks = ) +
+  scale_y_continuous(limits = ,breaks = ) +
+  facet_wrap(~ age_group, levels = c("young_adults", "middle_aged", "elderly_adults"), ncol = 3) +
+  theme_minimal()+
+  labs()
+#I can use this plot to compare the correlations accross different age groups
+#add labels and titles to make the plot clearer
+#make them side_by_side to emphasis the different age groups effects
+
 ```
 
 ```{r import Age and Possible Selves data, include=FALSE}

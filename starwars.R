@@ -80,3 +80,39 @@ ggplot(data = sw.wrangled.goal, aes(x = height_in, y = mass)) +
   geom_point(shape = 24, colour = "black", fill = "black") +
   scale_y_continuous(limits = c(0, 160), breaks = c(seq(0,160, by = 40)) ) +
   scale_x_continuous(breaks = c(seq(0,90, by = 20)))
+
+
+##Assignment 12 Part 1
+#Plot 1: Hair color and Mass Box plot
+ggplot(sw.wrangled.goal) +
+  geom_boxplot(aes(x = hair, y = mass, fill = hair)) +
+  scale_y_continuous(limits = c(0, 160), breaks = c(seq(0, 160, by = 40))) +
+  geom_point(data = sw.wrangled.goal, aes(x = hair, y = mass)) +
+  labs (x = "Hair color(s)", y = "Mass(kg)", fill = "Colorful hair")
+#Plot 2: Compare correlations between mass, height, and hair
+ggplot(sw.wrangled.goal, aes(x = mass, y = height_in, color = brown_hair)) +
+  geom_smooth(method = lm) +
+  geom_point()+
+  scale_x_continuous(limits = c(-200, 200), breaks = c(seq(-200, 200, by = 100))) +
+  scale_y_continuous(limits = c(-4, 200), breaks = c(-4, 20, 23, 60, 80, 90, 100, 110, 120), 
+                     labels = c(-4, 20, 23, " ", 80, " ", 100, " ", " ")) +
+  facet_wrap(~ factor(brown_hair, levels = c("TRUE", "FALSE")), ncol = 2, labeller = labeller(brown_hair = c("TRUE" = "Has brown hair", "FALSE" = "No brown hair" ))) +
+  theme_minimal()+
+  labs(x = "mass", y = "height_in", color = "brown hair", title = "Mass vs. height by brown-hair-havingness")
+#Plot 3: species first letter frequency plot
+sw_first_letter <- sw.wrangled.goal %>%
+  mutate(first_letter = substr(species, 1, 1)) %>%
+  drop_na() %>%
+  group_by(first_letter, gender) %>%
+  summarise(count = n()) %>%
+  arrange(first_letter) %>%
+  ungroup()
+
+ggplot(sw_first_letter, aes(x = count, y = first_letter, fill = gender)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_x_continuous(limits = c(0, 30), breaks = c(seq(0, 30, by = 10))) +
+  labs(x = "count", y = "species_first_letter", caption = "A clear male human bias") +
+  scale_fill_manual(values = c("m" = "skyblue", "f" = "pink")) +
+  theme_minimal() +
+  theme(legend.position = "right") 
+#I don't know how to revise the order of the graph
