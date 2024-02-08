@@ -116,3 +116,45 @@ ggplot(sw_first_letter, aes(x = count, y = first_letter, fill = gender)) +
   theme_minimal() +
   theme(legend.position = "right") 
 #I don't know how to revise the order of the graph
+
+## Assignment 13 Part 1
+#Plot 1: Hight and Weight Across Gender correlation plot
+install.packages("ggplot2")
+library(ggplot2)
+install.packages("ggsci")
+library(ggsci)
+ggplot(sw.wrangled.goal, aes(x = height_cm, y = mass, color = gender)) +
+  geom_smooth(method = lm) +
+  geom_point() +
+  scale_x_continuous(limits = c(60, 270), breaks = c(seq(60,270, by = 30))) +
+  facet_wrap(~ factor(gender, levels = c("f", "m", NA)), 
+             ncol = 3, 
+             scales = "free_y", 
+             labeller =labeller(gender = c(f = "Female", m = "Male", "NA" = "Other")) ) + #I have no idea why the facet lable did not change
+  scale_color_manual(values = c(f = "maroon", m = "#767575", "NA" = "#ffa21a")) + #I don't know how to change the color of the NA
+  labs(x = "Height(cm)", 
+       y = "Mass(kg)", 
+       title = "Height and weight accross gender presentation", 
+       subtitle = "A cautionary tale in midleading ''free'' axis scales & bad design choice",
+       caption = "Color hint: use the ggsci package!",
+       color = "Gender Presentation") +
+  theme(strip.background = element_rect(fill = "darkgreen", color = "black"),
+        strip.text = element_text(hjust = 0, color = "white"),
+        axis.title.x = element_text(angle = 45, hjust = 1),
+        panel.background = element_rect(fill = "#FFEFEC"),
+        panel.grid.major.x = element_line(colour = "white", linetype = 5),
+        panel.grid.minor.x = element_blank(),
+        panel.grid.major.y = element_line(colour = "lightgrey", linetype = 4),
+        panel.grid.minor.y = element_blank(),
+        text = element_text(family = "Helvetica"),
+        legend.position = "bottom",
+        legend.title = element_text(family = "Brush Script MT"),
+        legend.key = element_rect(fill = "lavender"), 
+        legend.box.background = element_rect(fill = "lavender", color = "black", size = 1),
+        plot.caption = element_text(colour = "red", hjust = 0, angle = 180)
+        )
+# I don't know how to change the color fill of the legend box
+# I still haven't figured out how to change the facet/panel names
+# I wonder do I need to modify the NA into something else to make it show up in the legend key
+
+
