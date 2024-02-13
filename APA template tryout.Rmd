@@ -48,6 +48,35 @@ footnotelist      : no
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
+<!--Assignment 14-->
+While self-concept clarity and subjective well-being may change with age (see Table\ \@ref(tab:table-age-scc-and-swl), the curvilinear relationship is hard to find in a correlation (see Figure\ \@ref(fig:Figure 1)). 
+Something about the role of possible selves and its relationship with well-being and self-concept clarity. 
+The influence of the frequency thinking about positive possible selves on self-concept clarity is positive (See Figure\ \@ref(fig:Figure 2)).
+
+```{r table-age-scc-and-swl, results = 'asis'}
+#Assignment 14
+library(knitr)
+install.packages("kableExtra")
+library(kableExtra)
+table1 <- Age_and_Possible_Selves_9_6_19 %>%
+  group_by(age) %>%
+  summarize(mean.scc = mean(scc_avg), sd.scc = sd(scc_avg), mean.swl = mean(swl_avg), sd.swl = sd(swl_avg),n.model = n())
+
+kable(table1, 
+      digits = 2,
+      col.names = c("Age Groups", "Self-Concpet Clarity Score", "Subjective Well-Being Score"),
+      align = c("c", "c", "c"),
+      caption = "Self-Concept Clarity and Subjective Well-Being Across Age" ) %>%
+  kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>%
+  kable_classic(html_font = "Times New Rome") %>%
+  row_spec(1, bold = T) %>%
+  
+  
+
+# apa_table(table1, caption = "Self-Concept Clarity and Subjective Well-Being Across Age") is this argument right?
+
+```
+
 ```{r plot, include=FALSE}
 #Assignment 10
 #graph out the potential models and results
@@ -63,9 +92,11 @@ ggplot(data = Age_and_Possible_Selves_9_16_19, aes(x = posfre, y = scc)) +
 #this is just an example for a line graph
 #if i want to use age_sq as a variable, which I will need to, the graph needs to be curvilinear
 #I wonder if geom_line will do it or not
+```
 
+```{r Figure 1, include=FALSE} 
 #Assignment 12 Part 2
-ggplot(data = Age_and_Possible_Selves_9_16_19, aes(x = posfre, y = scc, color = age_group)) +
+ggplot(data = Age_and_Possible_Selves_9_16_19, aes(x = swl, y = scc, color = age_group)) +
   geom_smooth(method = lm) +
   geom_point() +
   scale_x_continuous(limits = , breaks = ) +
@@ -76,7 +107,9 @@ ggplot(data = Age_and_Possible_Selves_9_16_19, aes(x = posfre, y = scc, color = 
 #I can use this plot to compare the correlations accross different age groups
 #add labels and titles to make the plot clearer
 #make them side_by_side to emphasis the different age groups effects
+```
 
+```{r Figure 2, include=FALSE}
 #Assignment 13 Part 2
 ggplot(data = Age_and_Possible_Selves_9_16_19, aes(x = posfre, y = scc, color = age_group)) +
   geom_smooth(method = lm) +
