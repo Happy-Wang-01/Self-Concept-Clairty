@@ -48,6 +48,45 @@ footnotelist      : no
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
+```{r analysis plan, include=FALSE}
+#Assignment 15 and 16
+library(tidyverse)
+library(psych)
+library(stats)
+library(lme4)
+library(scales)
+
+# descriptive analysis
+## age distribution by group with each group's mean, median, mode, and SD of age
+ages <- Age_and_Possible_Selves_9_6_19 %>%
+  select(age) %>%
+  drop_na()
+breaks <- c(18, 30, 50, Inf)
+labels <- c("Young Adults", "Middle-Aged", "Elderly Adults")
+ages_numeric <- unlist(ages)
+age_group <- cut(ages_numeric, breaks = breaks, labels = labels, right = F)
+ages$age_group <- age_group
+summary(age_group)
+age_self <- ages %>%
+  group_by(age_group) %>%
+#reframe(mean_age = mean(age, na.rm = TRUE)) %>%
+ # reframe(median_age = median(age,na.rm = TRUE)) %>%
+  #reframe(mode_age = mode(age,na.rm = TRUE)) %>%
+  #reframe(sd_age = sd(age,na.rm = TRUE)) %>%
+  summarize(mean = mean(age),
+         median = median(age),
+         sd = sd(age),
+         range = diff(range(age))
+  ) #I cannot see the result table, I don't know how to let it show
+
+# hypothesis testing
+## correlation between self-concept clarity and subjective-well being
+cor_sccswl <- cor(scc_avg, swl_avg)
+#Show in New Window
+#Error: object 'swl_avg' not found; The name is the same as the one in dataset, I don't know why this can't run
+
+```
+
 <!--Assignment 14-->
 While self-concept clarity and subjective well-being may change with age (see Table\ \@ref(tab:table-age-scc-and-swl), the curvilinear relationship is hard to find in a correlation (see Figure\ \@ref(fig:Figure 1)). 
 Something about the role of possible selves and its relationship with well-being and self-concept clarity. 
