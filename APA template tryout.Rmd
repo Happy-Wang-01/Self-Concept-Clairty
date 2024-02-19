@@ -85,6 +85,7 @@ cor_sccswl <- cor(scc_avg, swl_avg)
 #Show in New Window
 #Error: object 'swl_avg' not found; The name is the same as the one in dataset, I don't know why this can't run
 
+
 ```
 
 <!--Assignment 14-->
