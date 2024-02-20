@@ -48,6 +48,12 @@ footnotelist      : no
 classoption       : "man"
 output            : papaja::apa6_pdf
 ---
+<!--Assignment 17-->
+The study recruited `r nrow(Age_and_Possible_Selves_9_6_19)` participants. The mean age is `r mean(age)`, `r sd(age)` and `r print(frq_female)` female.
+The results indicate a positive correlatoin between self-concept clarity and subjective well-being, `r round(cor_scc_swl$[["r"]], 2`, `r apa_p(cor_scc_swl$p.value)`. 
+
+<!-- I am not 100% sure how to use "round()" in he right way -->
+
 ```{r analysis plan, include=FALSE}
 #Assignment 15 and 16
 library(tidyverse)
@@ -81,11 +87,21 @@ age_self <- ages %>%
 
 # hypothesis testing
 ## correlation between self-concept clarity and subjective-well being
-cor_sccswl <- cor(scc_avg, swl_avg)
+library(haven)
+Age_and_Possible_Selves_9_6_19 <- read_sav("localonly/Age and Possible Selves 9.6.19.sav")
+str(Age_and_Possible_Selves_9_6_19)
+names(Age_and_Possible_Selves_9_6_19)
+
+cor_scc_swl <- cor(Age_and_Possible_Selves_9_6_19$scc_avg, Age_and_Possible_Selves_9_6_19$swl_avg)
+print(cor_scc_swl)
 #Show in New Window
 #Error: object 'swl_avg' not found; The name is the same as the one in dataset, I don't know why this can't run
 
+#Assignment 17
+frq_female <- table(Age_and_Possible_Selves_9_6_19$female == 1, useNA = "ifany")
 
+# Print the result
+print(frq_female)
 ```
 
 <!--Assignment 14-->
