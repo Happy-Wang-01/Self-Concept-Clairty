@@ -36,3 +36,116 @@ knitr::opts_chunk$set(echo = TRUE)
 library("papaja")
 r_refs("r-references.bib")
 ```
+
+
+```{r analysis plan, include=FALSE}
+#Assignment 15 and 16
+library(tidyverse)
+library(psych)
+library(stats)
+library(lme4)
+library(scales)
+
+library(haven)
+library(magrittr)
+Age_and_Possible_Selves_9_6_19 <- read_sav("localonly/Age and Possible Selves 9.6.19.sav")
+str(Age_and_Possible_Selves_9_6_19)
+names(Age_and_Possible_Selves_9_6_19)
+
+# descriptive analysis
+## age distribution by group with each group's mean, median, mode, and SD of age
+ages <- Age_and_Possible_Selves_9_6_19 %>%
+  select(age) %>%
+  drop_na()
+breaks <- c(18, 30, 50, Inf)
+labels <- c("Young Adults", "Middle-Aged", "Elderly Adults")
+ages_numeric <- unlist(ages)
+age_group <- cut(ages_numeric, breaks = breaks, labels = labels, right = F)
+ages$age_group <- age_group
+summary(age_group)
+age_self <- ages %>%
+  group_by(age_group) %>%
+#reframe(mean_age = mean(age, na.rm = TRUE)) %>%
+ # reframe(median_age = median(age,na.rm = TRUE)) %>%
+  #reframe(mode_age = mode(age,na.rm = TRUE)) %>%
+  #reframe(sd_age = sd(age,na.rm = TRUE)) %>%
+  summarize(mean = mean(age),
+         median = median(age),
+         sd = sd(age),
+         range = diff(range(age))) #I cannot see the result table, I don't know how to let it show
+age_self
+
+# hypothesis testing
+## correlation between self-concept clarity and subjective-well being
+library(haven)
+library(magrittr)
+Age_and_Possible_Selves_9_6_19 <- read_sav("localonly/Age and Possible Selves 9.6.19.sav")
+str(Age_and_Possible_Selves_9_6_19)
+names(Age_and_Possible_Selves_9_6_19)
+A_and_PS <- Age_and_Possible_Selves_9_6_19 %>%
+  select(swl_avg, scc_avg, clar_avg, freq_avg, posfreq_avg, posclar_avg, posdist_avg, negfreq_avg, negclar_avg, negdist_avg, age, age_sq, ageXposclair, age_sqXposclair) %>%
+  drop_na()
+
+
+cor_scc_swl <- cor(A_and_PS$scc_avg, A_and_PS$swl_avg)
+cor_scc_age <- cor(A_and_PS$scc_avg, A_and_PS$age)
+print(cor_scc_swl)
+print(cor_scc_age)
+#Show in New Window
+#Error: object 'swl_avg' not found; The name is the same as the one in dataset, I don't know why this can't run
+
+#Assignment 17
+frq_female <- table(Age_and_Possible_Selves_9_6_19$female == 1, useNA = "ifany")
+
+# Print the result
+print(frq_female)
+
+##<!--
+##and `r print(frq_female)` female.
+##The results indicate a positive correlatoin between self-concept clarity and subjective well-being, `r round(cor_scc_swl$[["r"]], 2`, `r apa_p(cor_scc_swl$p.value)`. 
+#-->
+
+#<!-- I am not 100% sure how to use "round()" in he right way -->
+```
+## Participants
+
+The study recruited `r nrow(A_and_PS)` participants. The mean age is `r round(mean(ages$age), digits = 2)`, SD is `r round(sd(ages$age), digits = 2)`.
+
+```{r table-age-scc-and-swl, results = 'asis'}
+#Assignment 14
+library(dplyr)
+library(magrittr) 
+library(knitr)
+install.packages("kableExtra")
+# For dev version
+# install.packages("devtools")
+#devtools::install_github("haozhu233/kableExtra")
+#library(kableExtra)
+install.packages("dplyr")
+library(dplyr)
+table1 <- Age_and_Possible_Selves_9_6_19 %>%
+  group_by(age) %>%
+  summarize(mean.scc = mean(scc_avg), sd.scc = sd(scc_avg), mean.swl = mean(swl_avg), sd.swl = sd(swl_avg),n.model = n())
+
+kable(table1, 
+      digits = 2,
+      col.names = c("Age", "Self-Concpet Clarity Score", "SD","Subjective Well-Being Score", "SD", "N"),
+      align = c("c", "c", "c"),
+      caption = "Self-Concept Clarity and Subjective Well-Being Across Age" ) %>%
+ kable_styling(bootstrap_options = c("striped", "hover"), full_width = F) %>%
+  kable_classic(html_font = "Times New Rome") %>%
+  row_spec(1, bold = T)
+  
+
+# apa_table(table1, caption = "Self-Concept Clarity and Subjective Well-Being Across Age") is this argument right?
+
+```
+
+```{r Figure 1, include=TRUE}
+library(ggplot2)
+ggplot(data = Age_and_Possible_Selves_9_6_19, aes(x = Age_and_Possible_Selves_9_6_19$posfreq_avg, y = Age_and_Possible_Selves_9_6_19$scc_avg)) +
+  geom_smooth(method = lm) +
+  geom_point()
+```
+## Result
+While self-concept clarity and subjective well-being may change with age (see Table\ \@ref(tab:table-age-scc-and-swl), an overall negative relationship between self-concept clarity and subjective well-being. (see Figure\ \@ref(fig:Figure 1)). 
