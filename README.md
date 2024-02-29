@@ -12,5 +12,3 @@ The explanations contained in the current datasets include social roles, role en
 Use the same file for the submission of assignments most of the time. 
 * Submission will be under *APA template tryout.Rmd* and *Proposal.Rmd*.
 * References will be under *r-reference.bib*, *reference.bib*, and *Self-Concept Clarity and Well-Being.bib*.
-\
-
