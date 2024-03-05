@@ -60,7 +60,7 @@ install.packages("dplyr")
 library(dplyr)
 install.packages("knitr")
 library(knitr)
-install.packages("ggplot2")
+
 library(ggplot2)
 
 
