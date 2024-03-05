@@ -1,13 +1,13 @@
 ---
 title             : "Exploring the Role of Deviance on Self-Concept Clarity Across the Lifespan"
-shorttitle        : "Title"
+shorttitle        : "Deviance on SCC across the Lifespan"
 
 author: 
   - name          : "Yan Wang"
     affiliation   : "1"
-    corresponding : yes    # Define only one corresponding author
-    address       : "Postal address"
-    email         : "my@email.com"
+    corresponding : no    # Define only one corresponding author
+    address       : 
+    email         : "happyywang@uchicago.edu"
     role: # Contributorship roles (e.g., CRediT, https://credit.niso.org/)
       - "Conceptualization"
       - "Writing - Original Draft Preparation"
@@ -18,17 +18,11 @@ affiliation:
     institution   : "University of Chicago"
 
 abstract: |
-  One or two sentences providing a **basic introduction** to the field,  comprehensible to a scientist in any discipline.
-  Two to three sentences of **more detailed background**, comprehensible  to scientists in related disciplines.
-  One sentence clearly stating the **general problem** being addressed by  this particular study.
-  One sentence summarizing the main result (with the words "**here we show**" or their equivalent).
-  Two or three sentences explaining what the **main result** reveals in direct comparison to what was thought to be the case previously, or how the  main result adds to previous knowledge.
-  One or two sentences to put the results into a more **general context**.
-  Two or three sentences to provide a **broader perspective**, readily comprehensible to a scientist in any discipline.
+  Researchers have found positive relationships between self-concept clarity and subjective well-being. Recently, a curvilinear relationship has been found on self-concept clarity over time. Yet, the underlying mechanism for this relationship stays unclear. This study aims to test a potential explanation for the relationship between self-concept clarity and subjective well-being. While social clock can impact both self-concept clarity and subjective well-being. The extent to which people deviate from the social clock might be related to both their self-concept clarity and their well-being. Using an online survey to recruit participants representative of all age ranges, the study want to explore if the role of deviance from the social clock can explain the curvilinear relationship between self-concept clarity and subjective well-being. For the primiary analysis, Hypothesis 1 and 2 are supported that self-concept clarity and degree of deviance from the social clock have a positive association with subjective well-being. 
   
   <!-- https://tinyurl.com/ybremelq -->
   
-keywords          : "keywords"
+keywords          : "Self-Concept Clairy, Subjective Well-Being, Age, Social Clock Theory"
 wordcount         : "X"
 
 bibliography      : "SCC1.bib"
@@ -50,23 +44,23 @@ figsintext        : yes
 ```{r setup, include = FALSE}
 chooseCRANmirror(ind=65)
 library("papaja")
-#install.packages("correlation")
+install.packages("correlation")
 library(correlation)
-#install.packages("Hmisc")
+install.packages("Hmisc")
 library(Hmisc)
-#install.packages("lme4")
+install.packages("lme4")
 library(lme4)
-#install.packages("haven")
+install.packages("haven")
 library(haven)
-#install.packages("magrittr")
+install.packages("magrittr")
 library(magrittr)
-#install.packages("readr")
+install.packages("readr")
 library(readr)
-#install.packages("dplyr")
+install.packages("dplyr")
 library(dplyr)
-#install.packages("knitr")
+install.packages("knitr")
 library(knitr)
-#install.packages("ggplot2")
+install.packages("ggplot2")
 library(ggplot2)
 
 
@@ -119,7 +113,7 @@ SCCcor <- SCC[, c("SWLScr", "SCCScr", "MYA%", "MMA%", "MEA%", "Age")] %>%
 ```
 
 ## Participants
-Participants were recruited via Cloud Research. Cloud Research is an online platform for recruiting potential survey respondents. A total of `r nrow(SCCcor)` participants were recruited and included in the analysis (*M* = `r round(mean(SCCcor$Age), 2)`, *SD* = `r round(sd(SCCcor$Age), 2)`). All participants are American adults who can read English. 
+Participants were recruited via Cloud Research. Cloud Research is an online platform for recruiting potential survey respondents. A total of `r nrow(SCCcor)` participants were recruited and included in the analysis (*M* = `r round(mean(SCCcor$Age), 2)`, *SD* = `r round(sd(SCCcor$Age), 2)`). With a minimum of `r min(SCCcor$Age)` and a maximum of `r max(SCCcor$Age)`. All participants are American adults who can read English. 
 
 ## Material
 
@@ -242,7 +236,12 @@ ggplot(data = SCC_SWL, aes(x = SCCScr, y = SCCScr, color = `Age Group`)) +
 ```
 
 # Discussion
-The analysis provided evidence for Hypothesis 1 and 2 that self-concept clarity and degree of deviance from the social clock have a positive association with subjective well-being.
+The analysis provided evidence for Hypothesis 1 and 2 that self-concept clarity and degree of deviance from the social clock have a positive association with subjective well-being. More specifically, people with greater self-concept clarity experience higher life satisfaction, and people who perceive themselves less deviant from the social clock have higher life satisfaction.
+
+This study is significant because at the current stage of research, the underlying mechanism of the curvilinear relationship between self-concept clarity and subjective well-being is still open to interpretation. This study explores potential influential lifetime factors from a perspective which no research has explored before. Deviance from social clock, even though an older topic, may be able to bring new insight into different fields of research like self-concept clarity. With a more holistic perspective, it make sense trying to explain the curvilinear relationship with perceived deviance from the social clock.
+
+However, this study is not without limitation. Since there is no existing scale measure deviance from the social clock, the measurement has no previous reliability or validity check. The measure itself can be difficult to develop due to very minimal research in this field on elderly adults’ life markers. Thus, it can be hard to balance the number of markers for each age range.
+Future studies can work on creating a more valid and reliable measurement for this concept, or knit the measurement for life markers, life satisfaction, self-concept clarity, self-esteem, etc. together for a holistic measurement aiming to capture the level of happiness in life.
 
 \newpage
 
