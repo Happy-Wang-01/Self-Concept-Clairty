@@ -232,7 +232,8 @@ ggplot(data = SCC_SWL, aes(x = SCCScr, y = SCCScr, color = `Age Group`)) +
         legend.text = element_text(family = "Times"),
         axis.title = element_text(family = "Times"),
         panel.grid.minor = element_blank(),
-        axis.line = element_line())
+        axis.line = element_line(),
+          title = element_text(family = "Times", size = 10))
 ```
 
 # Discussion
