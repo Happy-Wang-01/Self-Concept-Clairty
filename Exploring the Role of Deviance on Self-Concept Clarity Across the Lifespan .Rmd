@@ -23,7 +23,7 @@ abstract: |
   <!-- https://tinyurl.com/ybremelq -->
   
 keywords          : "Self-Concept Clairy, Subjective Well-Being, Age, Social Clock Theory"
-wordcount         : ""
+wordcount         : "2636"
 
 bibliography      : "SCC1.bib"
 
